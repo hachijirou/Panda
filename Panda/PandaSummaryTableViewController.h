@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * 登録したWebサイト情報のひとまりまりの一覧を表示するテーブルビュー
+ */
 @interface PandaSummaryTableViewController : UITableViewController
 
 @end

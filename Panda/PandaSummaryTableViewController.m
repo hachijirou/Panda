@@ -7,12 +7,21 @@
 //
 
 #import "PandaSummaryTableViewController.h"
+#import "PandaUrlGroup.h"
 
 @interface PandaSummaryTableViewController ()
+
+@property (nonatomic) NSMutableArray *items;
 
 @end
 
 @implementation PandaSummaryTableViewController
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    _items = [[NSMutableArray alloc] init];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,8 +39,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,30 +51,65 @@
 
 #pragma mark - Table view data source
 
+// 一覧のセクション数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
+// 一覧の行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.items.count;
 }
 
-/*
+// 一覧の表示
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *MyIdentifier = @"UrlGroupCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    PandaUrlGroup *item = self.items[indexPath.row];
+    cell.textLabel.text = item.title;
     
     return cell;
 }
-*/
+
+// 行の登録
+- (IBAction)addItem:(id)sender
+{
+    PandaUrlGroup *newItem = [[PandaUrlGroup alloc] init];
+    newItem.title = [NSString stringWithFormat:@"Url Grouop %ld", (long)self.items.count];
+    
+    NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    // データソースの更新
+    [self.items insertObject:newItem atIndex:indexPathToInsert.row];
+    // テーブルビュー更新
+    [self.tableView insertRowsAtIndexPaths:@[indexPathToInsert]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+// 編集時の追加ボタンの有効/無効の切り替え
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    self.navigationItem.leftBarButtonItem.enabled = !editing;
+}
+
+// 行の削除
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 行が削除された場合は、それをリストから取り除く
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_items removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

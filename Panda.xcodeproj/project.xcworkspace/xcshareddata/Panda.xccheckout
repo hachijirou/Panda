@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0ADE76E6-B88C-43C2-BE3F-F0D1028BA834</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Panda</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1B17C4CF-6D25-4828-B997-A617E1992E3F</key>
+		<string>https://github.com/hachijirou/Panda.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Panda.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1B17C4CF-6D25-4828-B997-A617E1992E3F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hachijirou/Panda.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1B17C4CF-6D25-4828-B997-A617E1992E3F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B17C4CF-6D25-4828-B997-A617E1992E3F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Panda</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -13,6 +13,9 @@
 
 @property (nonatomic) NSMutableArray *items;
 
+// 詳細編集画面から戻ったときに呼び出されるアクション
+- (IBAction)backToList:(UIStoryboardSegue *)unwindSegue;
+
 @end
 
 @implementation PandaSummaryTableViewController
@@ -78,19 +81,19 @@
 }
 
 // 行の登録
-- (IBAction)addItem:(id)sender
-{
-    PandaUrlGroup *newItem = [[PandaUrlGroup alloc] init];
-    newItem.title = [NSString stringWithFormat:@"Url Grouop %ld", (long)self.items.count];
-    
-    NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:0 inSection:0];
-    
-    // データソースの更新
-    [self.items insertObject:newItem atIndex:indexPathToInsert.row];
-    // テーブルビュー更新
-    [self.tableView insertRowsAtIndexPaths:@[indexPathToInsert]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+//- (IBAction)addItem:(id)sender
+//{
+//    PandaUrlGroup *newItem = [[PandaUrlGroup alloc] init];
+//    newItem.title = [NSString stringWithFormat:@"Url Grouop %ld", (long)self.items.count];
+//    
+//    NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:0 inSection:0];
+//    
+//    // データソースの更新
+//    [self.items insertObject:newItem atIndex:indexPathToInsert.row];
+//    // テーブルビュー更新
+//    [self.tableView insertRowsAtIndexPaths:@[indexPathToInsert]
+//                          withRowAnimation:UITableViewRowAnimationAutomatic];
+//}
 
 // 編集時の追加ボタンの有効/無効の切り替え
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -109,6 +112,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [_items removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+// 詳細編集画面から戻ったときに呼び出されるアクション
+- (IBAction)backToList:(UIStoryboardSegue *)unwindSegue
+{
+    
 }
 
 /*

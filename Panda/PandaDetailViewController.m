@@ -10,6 +10,11 @@
 
 @interface PandaDetailViewController ()
 
+// タイトル
+@property (weak, nonatomic) IBOutlet UITextField *titleTextFIeld;
+// メモ
+@property (weak, nonatomic) IBOutlet UITextView *memoTextView;
+
 @end
 
 @implementation PandaDetailViewController
@@ -27,6 +32,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // タイトルのテキストビューに枠線を設定
+    
+    // メモのテキストビューに枠線を設定
+    _memoTextView.layer.borderWidth = 1;
+    _memoTextView.layer.borderColor = [[UIColor blackColor] CGColor];
 }
 
 - (void)didReceiveMemoryWarning

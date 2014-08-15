@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PandaDetailViewController : UIViewController
+@interface PandaDetailViewController : UIViewController<UITextFieldDelegate>
 
 @end

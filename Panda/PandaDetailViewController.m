@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextFIeld;
 // メモ
 @property (weak, nonatomic) IBOutlet UITextView *memoTextView;
+// URL
+@property (weak, nonatomic) IBOutlet UITableView *UrlTableView;
 
 @end
 
@@ -33,17 +35,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // textFieldのDelegate通知を受け取る
+    self.titleTextFIeld.delegate = self;
+    
     // タイトルのテキストビューに枠線を設定
     
     // メモのテキストビューに枠線を設定
-    _memoTextView.layer.borderWidth = 1;
-    _memoTextView.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.memoTextView.layer.borderWidth = 1;
+    self.memoTextView.layer.borderColor = [[UIColor blackColor] CGColor];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// UITextFieldのReturn時に呼ばれる処理
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // キーボードを閉じる
+    [textField resignFirstResponder];
+    return YES;
+}
+
+// ビューがtouchされたときに呼ばれる処理
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // キーボードを閉じる
+    [self.titleTextFIeld resignFirstResponder];
+    [self.memoTextView resignFirstResponder];
 }
 
 /*

@@ -20,7 +20,7 @@
 @property (nonatomic, copy) NSString *note;
 
 // 更新日時
-@property (nonatomic, copy) NSData *updateDate;
+@property (nonatomic, copy) NSDate *updateDate;
 
 // Webサイトの情報を管理する配列(PandaUrlオブジェクトの配列)
 @property (nonatomic, copy) NSArray *urlGroupList;

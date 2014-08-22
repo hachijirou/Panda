@@ -8,6 +8,7 @@
 
 #import "PandaSummaryTableViewController.h"
 #import "PandaUrlGroup.h"
+#import "PandaDetailViewController.h"
 
 @interface PandaSummaryTableViewController ()
 
@@ -15,6 +16,9 @@
 
 // 詳細編集画面から戻ったときに呼び出されるアクション
 - (IBAction)backToList:(UIStoryboardSegue *)unwindSegue;
+
+// 編集中のインデックスパス
+@property (nonatomic)  NSIndexPath *editingIndexPath;
 
 @end
 
@@ -114,10 +118,48 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
+// ビューコントローラへのデータの受け渡し
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // 詳細編集画面のインスタンスを取得
+    UINavigationController *navigationController = segue.destinationViewController;
+    PandaDetailViewController *detailViewController = (PandaDetailViewController *)navigationController.viewControllers[0];
+    
+    // 新規登録
+    if ([segue.identifier isEqualToString:@"EditDetailSegue"]) {
+        // URLグループオブジェクト設定
+        NSIndexPath *indexPath =
+        [self.tableView indexPathForCell:(UITableViewCell *)sender];
+        detailViewController.item = self.items[indexPath.row];
+        self.editingIndexPath = indexPath;
+    // 編集
+    } else if ([segue.identifier isEqualToString:@"AddDetailSegue"]) {
+        // URLグループオブジェクト初期化
+        detailViewController.item = [[PandaUrlGroup alloc] init];
+        self.editingIndexPath = nil;
+    }
+}
+
 // 詳細編集画面から戻ったときに呼び出されるアクション
 - (IBAction)backToList:(UIStoryboardSegue *)unwindSegue
 {
-    
+    // URLグループの追加
+    if ([[unwindSegue identifier] isEqualToString:@"SaveDetailEdit"] ) {
+        PandaDetailViewController *detailViewController = unwindSegue.sourceViewController;
+        if (self.editingIndexPath != nil) {
+            // データソースの更新
+            [self.items replaceObjectAtIndex:self.editingIndexPath.row withObject:detailViewController.item];
+            // テーブルビューの更新
+            [self.tableView reloadRowsAtIndexPaths:@[self.editingIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+        } else {
+            // データの登録とビューへの反映
+            NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:0 inSection:0];
+            detailViewController.item.updateDate = [NSDate date];
+            [self.items insertObject:detailViewController.item atIndex:indexPathToInsert.row];
+            [self.tableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
 }
 
 /*

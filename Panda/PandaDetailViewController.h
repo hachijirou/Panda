@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PandaUrlGroup.h"
 
-@interface PandaDetailViewController : UIViewController<UITextFieldDelegate>
+@interface PandaDetailViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
+
+@property (nonatomic, copy) PandaUrlGroup *item;
 
 @end

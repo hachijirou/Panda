@@ -78,10 +78,23 @@
     // URLリストの読み込み
     [self.urlListTableView registerNib:[UINib nibWithNibName:@"PandaUrlListCustomCell" bundle:nil] forCellReuseIdentifier:@"PandaUrlListCustomCell"];
     
-    NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:0 inSection:0];
-    PandaUrl *urlInfo = [[PandaUrl alloc] init];
-    [self.item.urlGroupList insertObject:urlInfo atIndex:indexPathToInsert.row];
-    [self.urlListTableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
+    // URLリストの生成
+    if (self.item.urlGroupList.count == 0) {
+        // デフォルトのURL情報入力フォームの作成
+        NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:0 inSection:0];
+        PandaUrl *urlInfo = [[PandaUrl alloc] init];
+        [self.item.urlGroupList insertObject:urlInfo atIndex:indexPathToInsert.row];
+        [self.urlListTableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        int i = 0;
+        for (PandaUrl *urlInfo in self.item.urlGroupList) {
+            NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:i inSection:0];
+            [self.item.urlGroupList insertObject:urlInfo atIndex:indexPathToInsert.row];
+            [self.urlListTableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
+            i++;
+        }
+    }
+    
     
 //    if (self.urlList.count == 0) {
 //        NSIndexPath *indexPathToDefault = [NSIndexPath indexPathForRow:0 inSection:0];

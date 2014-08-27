@@ -14,3 +14,16 @@
 @property (nonatomic, copy) PandaUrlGroup *item;
 
 @end
+
+// カスタムセル
+@interface PandaUrlListCustomCell : UITableViewCell
+// タイトル(サイト)
+@property (weak, nonatomic) IBOutlet UITextField *urlTitleTextField;
+// URL
+@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+@end
+
+// カスタムスクロールビュー
+@interface PandaScrollView : UIScrollView
+
+@end

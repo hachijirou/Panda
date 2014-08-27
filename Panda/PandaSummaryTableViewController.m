@@ -125,14 +125,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     UINavigationController *navigationController = segue.destinationViewController;
     PandaDetailViewController *detailViewController = (PandaDetailViewController *)navigationController.viewControllers[0];
     
-    // 新規登録
+    // 編集
     if ([segue.identifier isEqualToString:@"EditDetailSegue"]) {
         // URLグループオブジェクト設定
         NSIndexPath *indexPath =
         [self.tableView indexPathForCell:(UITableViewCell *)sender];
         detailViewController.item = self.items[indexPath.row];
         self.editingIndexPath = indexPath;
-    // 編集
+    // 新規登録
     } else if ([segue.identifier isEqualToString:@"AddDetailSegue"]) {
         // URLグループオブジェクト初期化
         detailViewController.item = [[PandaUrlGroup alloc] init];

@@ -23,6 +23,6 @@
 @property (nonatomic, copy) NSDate *updateDate;
 
 // Webサイトの情報を管理する配列(PandaUrlオブジェクトの配列)
-@property (nonatomic, copy) NSArray *urlGroupList;
+@property (nonatomic, copy) NSMutableArray *urlGroupList;
 
 @end

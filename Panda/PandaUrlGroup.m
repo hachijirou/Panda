@@ -10,6 +10,14 @@
 
 @implementation PandaUrlGroup
 
+- (id)init
+{
+    if (self = [super init]) {
+        self.urlGroupList = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
     PandaUrlGroup *copiedObject = [[[self class] allocWithZone:zone] init];
@@ -17,7 +25,7 @@
         copiedObject->_title = [_title copyWithZone:zone];
         copiedObject->_note = [_note copyWithZone:zone];
         copiedObject->_updateDate = [_updateDate copyWithZone:zone];
-        copiedObject->_urlGroupList = [_urlGroupList copyWithZone:zone];
+        copiedObject->_urlGroupList = [_urlGroupList mutableCopyWithZone:zone];
     }
     return copiedObject;
 }

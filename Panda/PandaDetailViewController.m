@@ -31,6 +31,10 @@
 // タイトルの編集完了
 - (IBAction)titleEditingDidEnd:(id)sender;
 - (IBAction)titleEditingChanged:(id)sender;
+// Webサイトの情報を入力するテキストフィールドの追加
+- (IBAction)addTextFieldForUrlData:(id)sender;
+// 外部ブラウザを立ち上げる
+- (IBAction)openExternalBrowser:(id)sender;
 
 @end
 
@@ -204,6 +208,10 @@
     // 再利用できるセルがあれば再利用する
     PandaUrlListCustomCell *cell = (PandaUrlListCustomCell *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier forIndexPath:indexPath];
     
+    // 識別のためにタグを設定
+    cell.urlTitleTextField.tag = PandaDetailContentsTitlePrefix + indexPath.row;
+    cell.urlTextField.tag = PandaDetailContentsUrlPrefix + indexPath.row;
+    
     // textFieldのDelegate通知を受け取る
     cell.urlTitleTextField.delegate = self;
     cell.urlTextField.delegate = self;
@@ -211,10 +219,6 @@
     // タイトルのテキストフィールドに枠線を追加
     cell.urlTitleTextField.layer.borderWidth = 1;
     cell.urlTextField.layer.borderWidth = 1;
-    
-    // 識別のためにタグを設定
-    cell.urlTitleTextField.tag = PandaDetailContentsTitlePrefix + indexPath.row;
-    cell.urlTextField.tag = PandaDetailContentsUrlPrefix + indexPath.row;
     
     return cell;
 }
@@ -250,6 +254,20 @@
     }
 }
 
+// 外部ブラウザを立ち上げる
+- (IBAction)openExternalBrowser:(id)sender {
+}
+
+// Webサイトの情報を入力するテキストフィールドの追加
+- (IBAction)addTextFieldForUrlData:(id)sender {
+    // デフォルトのURL情報入力フォームの作成
+    if (self.item.urlGroupList.count < PandaDetailAddUrlDataTextFieldMax) {
+        NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:self.item.urlGroupList.count inSection:0];
+        PandaUrl *urlInfo = [[PandaUrl alloc] init];
+        [self.item.urlGroupList insertObject:urlInfo atIndex:indexPathToInsert.row];
+        [self.urlListTableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 @end
 
 @implementation PandaUrlListCustomCell

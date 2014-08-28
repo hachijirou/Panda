@@ -17,5 +17,7 @@ NSInteger const PandaDetailContentsTitlePrefix = 21000;
 NSInteger const PandaDetailContentsUrlPrefix = 22000;
 // スクロールを行う識別子の終端
 NSInteger const PandaDetailScrollTermination = 22999;
+// Webサイト情報の入力フォームを増やせる最大回数
+NSInteger const PandaDetailAddUrlDataTextFieldMax = 10;
 
 @end

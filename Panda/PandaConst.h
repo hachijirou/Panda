@@ -17,5 +17,7 @@ UIKIT_EXTERN NSInteger const PandaDetailContentsTitlePrefix;
 UIKIT_EXTERN NSInteger const PandaDetailContentsUrlPrefix;
 // スクロールを行う識別子の終端
 UIKIT_EXTERN NSInteger const PandaDetailScrollTermination;
+// Webサイト情報の入力フォームを増やせる最大回数
+UIKIT_EXTERN NSInteger const PandaDetailAddUrlDataTextFieldMax;
 
 @end

@@ -17,6 +17,9 @@
 @property (nonatomic, copy) NSString *contentsTitle;
 
 // WebサイトのURL
-@property (nonatomic, copy) NSURL *contentsUrl;
+@property (nonatomic, copy) NSString *contentsUrl;
+
+// 編集中フラグ
+@property BOOL isEditing;
 
 @end

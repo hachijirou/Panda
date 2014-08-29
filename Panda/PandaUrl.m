@@ -16,6 +16,7 @@
     if (copiedObject) {
         copiedObject->_contentsTitle = [_contentsTitle copyWithZone:zone];
         copiedObject->_contentsUrl = [_contentsUrl copyWithZone:zone];
+        copiedObject->_isEditing = NO;
     }
     return copiedObject;
 }

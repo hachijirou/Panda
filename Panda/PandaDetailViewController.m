@@ -8,7 +8,6 @@
 
 #import "PandaConst.h"
 #import "PandaDetailViewController.h"
-#import "PandaUrl.h"
 
 @interface PandaDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -27,6 +26,8 @@
 @property (strong, nonatomic) UITextField *memoryEditingTextField;
 // 画面をスクロールすべきか判定するフラグ
 @property BOOL canScroll;
+// Webサイト情報未編集を判定するフラグ
+@property BOOL isEditingToContentsData;
 
 // タイトルの編集完了
 - (IBAction)titleEditingDidEnd:(id)sender;
@@ -63,6 +64,7 @@
     
     // 制御系の変数の初期化
     self.canScroll = NO;
+    self.isEditingToContentsData = NO;
     
     // textFieldのDelegate通知を受け取る
     self.titleTextFIeld.delegate = self;
@@ -212,6 +214,18 @@
     cell.urlTitleTextField.tag = PandaDetailContentsTitlePrefix + indexPath.row;
     cell.urlTextField.tag = PandaDetailContentsUrlPrefix + indexPath.row;
     
+    // Webサイト情報の設定
+    PandaUrl *data = [self.item.urlGroupList objectAtIndex:indexPath.row];
+    
+    if (data == nil || data.isEditing ) {
+    //if (data == nil || indexPath.row == 0) {
+        cell.urlTitleTextField.text = cell.contentsInfo.contentsTitle;
+        cell.urlTextField.text = cell.contentsInfo.contentsUrl;
+    } else {
+        cell.urlTitleTextField.text = data.contentsTitle;
+        cell.urlTextField.text = data.contentsUrl;
+    }
+    
     // textFieldのDelegate通知を受け取る
     cell.urlTitleTextField.delegate = self;
     cell.urlTextField.delegate = self;
@@ -271,6 +285,23 @@
 @end
 
 @implementation PandaUrlListCustomCell
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        self.contentsInfo = [[PandaUrl alloc] init];
+    }
+    return self;
+}
+
+// URLタイトル編集完了
+- (IBAction)contentsTitleEditingDidEnd:(id)sender {
+    self.contentsInfo.contentsTitle = self.urlTitleTextField.text;
+}
+// URL編集完了
+- (IBAction)contentsUrlEditingDidEnd:(id)sender {
+    self.contentsInfo.contentsUrl = self.urlTextField.text;
+}
 
 @end
 

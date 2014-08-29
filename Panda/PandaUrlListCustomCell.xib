@@ -18,12 +18,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="contentsTitleEditingDidEnd:" destination="xRB-bU-RH3" eventType="editingDidEnd" id="5Bx-W4-J5B"/>
+                        </connections>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l7a-qx-ynj">
                         <rect key="frame" x="20" y="48" width="240" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="contentsUrlEditingDidEnd:" destination="xRB-bU-RH3" eventType="editingDidEnd" id="e7u-Uo-r2i"/>
+                        </connections>
                     </textField>
                 </subviews>
             </tableViewCellContentView>

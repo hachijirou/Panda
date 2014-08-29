@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PandaUrlGroup.h"
+#import "PandaUrl.h"
 
 @interface PandaDetailViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *urlTitleTextField;
 // URL
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+// Webサイト情報を管理するオブジェクト
+@property (nonatomic, copy) PandaUrl *contentsInfo;
 @end
 
 // カスタムスクロールビュー

@@ -11,7 +11,7 @@
 /**
  * Webサイト情報のひとつのまとまりを管理するオブジェクト.
  */
-@interface PandaUrlGroup : NSObject <NSCopying>
+@interface PandaUrlGroup : NSObject <NSCopying, NSCoding>
 
 // グループ名称
 @property (nonatomic, copy) NSString *title;

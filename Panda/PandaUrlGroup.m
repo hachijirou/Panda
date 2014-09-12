@@ -29,4 +29,31 @@
     }
     return copiedObject;
 }
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init]) {
+        _title = [decoder decodeObjectForKey:@"title"];
+        _note = [decoder decodeObjectForKey:@"note"];
+        _updateDate = [decoder decodeObjectForKey:@"updateDate"];
+        _urlGroupList = [decoder decodeObjectForKey:@"urlGroupList"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_title forKey:@"title"];
+    [encoder encodeObject:_note forKey:@"note"];
+    [encoder encodeObject:_updateDate forKey:@"updateDate"];
+    [encoder encodeObject:_urlGroupList forKey:@"urlGroupList"];
+}
+
+- (void)dealloc
+{
+    _title = nil;
+    _note = nil;
+    _updateDate =nil;
+    _urlGroupList = nil;
+}
 @end

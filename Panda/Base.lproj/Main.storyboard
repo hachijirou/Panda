@@ -67,6 +67,23 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
+        <!--Panda Show View Controller-->
+        <scene sceneID="ZLs-Wn-LTp">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="PdZ-e7-rdJ" customClass="PandaShowViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZKO-s2-sMA">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="PSX-xJ-CC0">
+                            <connections>
+                                <segue destination="I24-Df-cda" kind="unwind" unwindAction="backToList:" id="6WH-E4-zWh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xx7-Tp-gVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="I24-Df-cda" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1702" y="-831"/>
+        </scene>
         <!--Panda Summary Table View Controller-->
         <scene sceneID="sN7-4r-Cra">
             <objects>
@@ -94,6 +111,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="MR6-vX-iys" kind="modal" identifier="EditDetailSegue" trigger="accessoryAction" id="UC2-DQ-GhX"/>
+                                    <segue destination="vIm-TU-dHR" kind="modal" modalTransitionStyle="flipHorizontal" id="1HN-xJ-caj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -258,6 +276,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNy-VK-J8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1609" y="-161"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sIV-zH-61p">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vIm-TU-dHR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ZD-m3-H7B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PdZ-e7-rdJ" kind="relationship" relationship="rootViewController" id="b3B-sx-llo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7d6-XV-cBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1176" y="-831"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,7 @@
 #import "PandaSummaryTableViewController.h"
 #import "PandaUrlGroup.h"
 #import "PandaDetailViewController.h"
+#import "PandaUrlGroupRepository.h"
 
 @interface PandaSummaryTableViewController ()
 
@@ -19,6 +20,9 @@
 
 // 編集中のインデックスパス
 @property (nonatomic)  NSIndexPath *editingIndexPath;
+
+// PandaUrlGroupのリポジトリ
+@property (strong, nonatomic) PandaUrlGroupRepository *urlGroupRepository;
 
 @end
 
@@ -48,6 +52,15 @@
     
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // リポジトリの初期化
+    self.urlGroupRepository = [[PandaUrlGroupRepository alloc] init];
+    
+    // データの取得
+    self.items = [self.urlGroupRepository selectAll];
+    if (!self.items) {
+        self.items = [[NSMutableArray alloc] init];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -159,6 +172,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             [self.items insertObject:detailViewController.item atIndex:indexPathToInsert.row];
             [self.tableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
         }
+        
+        // データの永続化
+        [self.urlGroupRepository addObject:self.items];
     }
 }
 

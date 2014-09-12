@@ -20,4 +20,8 @@ NSInteger const PandaDetailScrollTermination = 22999;
 // Webサイト情報の入力フォームを増やせる最大回数
 NSInteger const PandaDetailAddUrlDataTextFieldMax = 10;
 
+// 通知
+// 詳細画面のセルが編集されたときに通知される
+NSString *const PandaDetailEditingCellNotification = @"PandaDetailEditingCellNotification";
+
 @end

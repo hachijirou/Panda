@@ -11,7 +11,7 @@
 /**
  * Webサイト情報を管理するオブジェクト.
  */
-@interface PandaUrl : NSObject <NSCopying>
+@interface PandaUrl : NSObject <NSCopying, NSCoding>
 
 // Webサイトのタイトル
 @property (nonatomic, copy) NSString *contentsTitle;

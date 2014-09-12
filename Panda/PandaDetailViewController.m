@@ -92,6 +92,16 @@
         [self.item.urlGroupList insertObject:urlInfo atIndex:indexPathToInsert.row];
         [self.urlListTableView insertRowsAtIndexPaths:@[indexPathToInsert] withRowAnimation:UITableViewRowAnimationFade];
     } else {
+        // 編集中フラグの初期化
+        int cnt = self.item.urlGroupList.count;
+        for (int i = 0; i < cnt; i++) {
+            PandaUrl *info = [self.item.urlGroupList objectAtIndex:i];
+            info.isEditing = NO;
+            [self.item.urlGroupList replaceObjectAtIndex:i withObject:info];
+        }
+    }
+    /*
+    else {
         int i = 0;
         for (PandaUrl *urlInfo in self.item.urlGroupList) {
             NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForRow:i inSection:0];
@@ -100,6 +110,7 @@
             i++;
         }
     }
+    */
     
     
 //    if (self.urlList.count == 0) {
@@ -111,6 +122,9 @@
     
     // キーボードが表示されたときのNotificationをうけとる
     [self registerForKeyboardNotifications];
+    
+    // セルが編集されたときのNotificationをうけとる
+    [self registForEditingCellNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -217,13 +231,14 @@
     // Webサイト情報の設定
     PandaUrl *data = [self.item.urlGroupList objectAtIndex:indexPath.row];
     
-    if (data == nil || data.isEditing ) {
-    //if (data == nil || indexPath.row == 0) {
+    if (data == nil || data.isEditing) {
         cell.urlTitleTextField.text = cell.contentsInfo.contentsTitle;
         cell.urlTextField.text = cell.contentsInfo.contentsUrl;
     } else {
         cell.urlTitleTextField.text = data.contentsTitle;
         cell.urlTextField.text = data.contentsUrl;
+        cell.contentsInfo.contentsTitle = data.contentsTitle;
+        cell.contentsInfo.contentsUrl = data.contentsUrl;
     }
     
     // textFieldのDelegate通知を受け取る
@@ -233,6 +248,9 @@
     // タイトルのテキストフィールドに枠線を追加
     cell.urlTitleTextField.layer.borderWidth = 1;
     cell.urlTextField.layer.borderWidth = 1;
+    
+    // テーブルビュー内の自分の位置をセット
+    cell.rowNumber = indexPath.row;
     
     return cell;
 }
@@ -268,8 +286,29 @@
     }
 }
 
+// セルが編集されたときの通知を受け取る
+- (void)registForEditingCellNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(editingContentCell:)
+                                                 name:PandaDetailEditingCellNotification
+                                               object:nil];
+}
+
+// セルが編集されたときにコールバックを受け取る
+- (void)editingContentCell:(NSNotification*)aNotification
+{
+    NSNumber *rowNumber = [[aNotification userInfo] objectForKey:@"rowNumber"];
+    //PandaUrl *pandaUrlInfo = [self.item.urlGroupList objectAtIndex:[rowNumber intValue]];
+    //pandaUrlInfo.isEditing = YES;
+    PandaUrl *pandaUrlInfo = [[aNotification userInfo] objectForKey:@"contentsInfo"];
+    [self.item.urlGroupList replaceObjectAtIndex:[rowNumber intValue] withObject:pandaUrlInfo];
+}
+
+
 // 外部ブラウザを立ち上げる
 - (IBAction)openExternalBrowser:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.google.co.jp/"]];
 }
 
 // Webサイトの情報を入力するテキストフィールドの追加
@@ -297,10 +336,26 @@
 // URLタイトル編集完了
 - (IBAction)contentsTitleEditingDidEnd:(id)sender {
     self.contentsInfo.contentsTitle = self.urlTitleTextField.text;
+    // 通知
+    [self notifyOfEditingContentCell];
 }
+
 // URL編集完了
 - (IBAction)contentsUrlEditingDidEnd:(id)sender {
     self.contentsInfo.contentsUrl = self.urlTextField.text;
+    // 通知
+    [self notifyOfEditingContentCell];
+}
+
+// セルが編集中ということを通知する
+- (void)notifyOfEditingContentCell {
+    self.contentsInfo.isEditing = YES;
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         [NSNumber numberWithInteger:self.rowNumber], @"rowNumber",
+                         self.contentsInfo, @"contentsInfo",
+                         nil];
+    NSNotification *n = [NSNotification notificationWithName:PandaDetailEditingCellNotification object:self userInfo:dic];
+    [[NSNotificationCenter defaultCenter] postNotification:n];
 }
 
 @end

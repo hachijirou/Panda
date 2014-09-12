@@ -20,4 +20,26 @@
     }
     return copiedObject;
 }
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init]) {
+        _contentsTitle = [decoder decodeObjectForKey:@"contentsTitle"];
+        _contentsUrl = [decoder decodeObjectForKey:@"contentsUrl"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_contentsTitle forKey:@"contentsTitle"];
+    [encoder encodeObject:_contentsUrl forKey:@"contentsUrl"];
+}
+
+- (void)dealloc
+{
+    _contentsTitle = nil;
+    _contentsUrl = nil;
+}
+
 @end

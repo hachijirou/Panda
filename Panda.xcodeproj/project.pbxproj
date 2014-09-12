@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D51ABAC519AC268700518BAA /* PandaUrlListCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51ABAC419AC268700518BAA /* PandaUrlListCustomCell.xib */; };
 		D51ABAC819ADE0A500518BAA /* PandaConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D51ABAC719ADE0A500518BAA /* PandaConst.m */; };
+		D527A6A819C1A62B0048FD66 /* PandaShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A6A719C1A62B0048FD66 /* PandaShowViewController.m */; };
 		D53C4A66199997FC008F0D44 /* PandaDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D53C4A65199997FC008F0D44 /* PandaDetailViewController.m */; };
 		D5A6E0AE198715DB008FAF64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6E0AD198715DB008FAF64 /* Foundation.framework */; };
 		D5A6E0B0198715DB008FAF64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6E0AF198715DB008FAF64 /* CoreGraphics.framework */; };
@@ -28,6 +29,7 @@
 		D5A6E0E719871919008FAF64 /* PandaSummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A6E0E619871919008FAF64 /* PandaSummaryTableViewController.m */; };
 		D5A6E0ED19871E15008FAF64 /* PandaUrlGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A6E0EC19871E15008FAF64 /* PandaUrlGroup.m */; };
 		D5A6E0F019871E31008FAF64 /* PandaUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A6E0EF19871E31008FAF64 /* PandaUrl.m */; };
+		D5F3C4FF19BF035B00A48B0E /* PandaUrlGroupRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F3C4FE19BF035B00A48B0E /* PandaUrlGroupRepository.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		D51ABAC419AC268700518BAA /* PandaUrlListCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PandaUrlListCustomCell.xib; sourceTree = "<group>"; };
 		D51ABAC619ADE0A500518BAA /* PandaConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PandaConst.h; sourceTree = "<group>"; };
 		D51ABAC719ADE0A500518BAA /* PandaConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PandaConst.m; sourceTree = "<group>"; };
+		D527A6A619C1A62B0048FD66 /* PandaShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PandaShowViewController.h; sourceTree = "<group>"; };
+		D527A6A719C1A62B0048FD66 /* PandaShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PandaShowViewController.m; sourceTree = "<group>"; };
 		D53C4A64199997FC008F0D44 /* PandaDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PandaDetailViewController.h; sourceTree = "<group>"; };
 		D53C4A65199997FC008F0D44 /* PandaDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PandaDetailViewController.m; sourceTree = "<group>"; };
 		D5A6E0AA198715DB008FAF64 /* Panda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Panda.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +77,8 @@
 		D5A6E0EC19871E15008FAF64 /* PandaUrlGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PandaUrlGroup.m; sourceTree = "<group>"; };
 		D5A6E0EE19871E31008FAF64 /* PandaUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PandaUrl.h; sourceTree = "<group>"; };
 		D5A6E0EF19871E31008FAF64 /* PandaUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PandaUrl.m; sourceTree = "<group>"; };
+		D5F3C4FD19BF035B00A48B0E /* PandaUrlGroupRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PandaUrlGroupRepository.h; sourceTree = "<group>"; };
+		D5F3C4FE19BF035B00A48B0E /* PandaUrlGroupRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PandaUrlGroupRepository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,8 @@
 				D53C4A64199997FC008F0D44 /* PandaDetailViewController.h */,
 				D53C4A65199997FC008F0D44 /* PandaDetailViewController.m */,
 				D51ABAC419AC268700518BAA /* PandaUrlListCustomCell.xib */,
+				D527A6A619C1A62B0048FD66 /* PandaShowViewController.h */,
+				D527A6A719C1A62B0048FD66 /* PandaShowViewController.m */,
 			);
 			path = Panda;
 			sourceTree = "<group>";
@@ -205,6 +213,8 @@
 		D5A6E0EA198719E3008FAF64 /* infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				D5F3C4FD19BF035B00A48B0E /* PandaUrlGroupRepository.h */,
+				D5F3C4FE19BF035B00A48B0E /* PandaUrlGroupRepository.m */,
 			);
 			name = infrastructure;
 			sourceTree = "<group>";
@@ -310,7 +320,9 @@
 			files = (
 				D5A6E0BA198715DB008FAF64 /* main.m in Sources */,
 				D5A6E0C7198715DB008FAF64 /* PandaSecondViewController.m in Sources */,
+				D5F3C4FF19BF035B00A48B0E /* PandaUrlGroupRepository.m in Sources */,
 				D5A6E0C4198715DB008FAF64 /* PandaFirstViewController.m in Sources */,
+				D527A6A819C1A62B0048FD66 /* PandaShowViewController.m in Sources */,
 				D5A6E0F019871E31008FAF64 /* PandaUrl.m in Sources */,
 				D53C4A66199997FC008F0D44 /* PandaDetailViewController.m in Sources */,
 				D5A6E0E719871919008FAF64 /* PandaSummaryTableViewController.m in Sources */,

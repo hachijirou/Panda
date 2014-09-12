@@ -20,4 +20,8 @@ UIKIT_EXTERN NSInteger const PandaDetailScrollTermination;
 // Webサイト情報の入力フォームを増やせる最大回数
 UIKIT_EXTERN NSInteger const PandaDetailAddUrlDataTextFieldMax;
 
+// 通知
+// 詳細画面のセルが編集されたときに通知される
+UIKIT_EXTERN NSString *const PandaDetailEditingCellNotification;
+
 @end

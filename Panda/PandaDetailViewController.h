@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 // Webサイト情報を管理するオブジェクト
 @property (nonatomic, copy) PandaUrl *contentsInfo;
+// テーブルビュー内の位置
+@property (nonatomic) NSInteger rowNumber;
+
 @end
 
 // カスタムスクロールビュー
